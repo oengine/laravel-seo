@@ -21,3 +21,95 @@ SEO Route:
 \OEngine\Seo\Facades\Seo::Route()
 ```
 
+Support Slug To dynamic view
+
+
+```php
+// url https://oengine.local/abc-xyz-product
+
+class ProductSlug extends \OEngine\Seo\Slug\SlugBase{
+    protected $tags = ['product'];
+    public function ProcessParams(): self
+    {
+        $this->format_key_value = false;
+
+        return parent::ProcessParams();
+    }
+    public function checkSlug()
+    {
+        return $this->checkParam('product');
+    }
+    public function formatUrl()
+    {
+        return '{$product$-product}';
+    }
+    public function viewSlug()
+    {
+        return [ProductController,'action'];
+    }
+}
+```
+
+
+```php
+// url https://oengine.local/product-abc-xyz
+
+class ProductSlug extends \OEngine\Seo\Slug\SlugBase{
+    protected $tags = ['product'];
+    public function ProcessParams(): self
+    {
+        //default is True
+        $this->format_key_value = true;
+
+        return parent::ProcessParams();
+    }
+    public function checkSlug()
+    {
+        return $this->checkParam('product');
+    }
+    public function formatUrl()
+    {
+        return '{product-$product$}';
+    }
+    public function viewSlug()
+    {
+        return [ProductController,'action'];
+    }
+}
+```
+
+```php
+// url https://oengine.local/catalog-abc-xyz
+
+class CatalogSlug extends \OEngine\Seo\Slug\SlugBase{
+    protected $tags = ['catalog','key1','key2','catalog-parent'];
+    public function ProcessParams(): self
+    {
+        //default is True
+        $this->format_key_value = true;
+
+        return parent::ProcessParams();
+    }
+    public function checkSlug()
+    {
+        return $this->checkParam('catalog');
+    }
+    public function formatUrl()
+    {
+        return '{catalog-$catalog$}';
+    }
+    public function viewSlug()
+    {
+        if($this->checkParam('key1')){
+            return [CatalogController,'action'];
+        }else if($this->checkParam('key2')){ 
+            return [CatalogController,'action2'];
+        }else{
+            //convert catalog,catalog-parent to $catalog,$catalogParent
+            return function($catalog,$catalogParent){
+                return $catalog
+            };
+        }
+    }
+}
+```

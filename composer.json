@@ -19,6 +19,9 @@
     }
   },
   "autoload": {
+    "files": [
+      "helpers/seo.php"
+    ],
     "psr-4": {
       "OEngine\\Seo\\": "src/"
     }
