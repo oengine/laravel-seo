@@ -104,7 +104,7 @@ class SlugManager
         foreach ($arrSlugs as $item) {
             if ($pageSlug == null && $item->ProcessParams()->checkSlug()) {
                 $request = request();
-                $route = Route::addRoute('get', '/', $item->viewSlug())->setContainer(app())->bind($request);
+                $route = Route::addRoute('get', $slug, $item->viewSlug())->setContainer(app())->bind($request);
                 foreach ($item->getParams() as $paramKey => $paramValue) {
                     $paramKey =  str($paramKey)->camel()->toString();
                     $route->setParameter($paramKey, $paramValue);
