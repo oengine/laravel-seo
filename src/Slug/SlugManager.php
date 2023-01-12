@@ -88,19 +88,6 @@ class SlugManager
     {
         $this->arrSlug[] = $class;
     }
-    private $arrParameters = [];
-    public function getParameter($name, $default = null)
-    {
-        return isset($this->arrParameters[$name]) && $this->arrParameters[$name] ? $this->arrParameters[$name] : $default;
-    }
-    private function setParameter($name, $value)
-    {
-        $this->arrParameters[$name] = $value;
-    }
-    public function getParameters()
-    {
-        return $this->arrParameters ?? [];
-    }
     public function ViewBySlug($slug)
     {
         $arrSlug = $this->arrSlug;
@@ -113,15 +100,18 @@ class SlugManager
             return strcmp($a->getSort(), $b->getSort());
         });
         $pageSlug = null;
-        /** @var \OEngine\SEO\Slug\SlugBase  */
+        /** @var \OEngine\Seo\Slug\SlugBase  */
         foreach ($arrSlugs as $item) {
             if ($pageSlug == null && $item->ProcessParams()->checkSlug()) {
-                $route = Route::addRoute('get', '/', $item->viewSlug())->setContainer(app())->bind(request());
+                $request = request();
+                $route = Route::addRoute('get', '/', $item->viewSlug())->setContainer(app())->bind($request);
                 foreach ($item->getParams() as $paramKey => $paramValue) {
                     $paramKey =  str($paramKey)->camel()->toString();
-                    $this->setParameter($paramKey, $paramValue);
                     $route->setParameter($paramKey, $paramValue);
                 }
+                $request->setRouteResolver(function () use ($route) {
+                    return $route;
+                });
                 $pageSlug =  $route->run();
             }
             $this->keySlugs[$item->getKey()] = $item;

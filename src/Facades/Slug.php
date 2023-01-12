@@ -1,6 +1,6 @@
 <?php
 
-namespace OEngine\SEO\Facades;
+namespace OEngine\Seo\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Facade;
  * @method static string ToUrl($slugName, $params)
  * @method static mixed getParameter($name, $default = null)
  *
- * @see \OEngine\SEO\Facades\Slug
+ * @see \OEngine\Seo\Facades\Slug
  */
 class Slug extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \OEngine\SEO\Slug\SlugManager::class;
+        return \OEngine\Seo\Slug\SlugManager::class;
     }
 }

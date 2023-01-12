@@ -3,6 +3,7 @@
 namespace OEngine\Seo;
 
 use Illuminate\Support\Facades\Route;
+use OEngine\Seo\Slug\SlugProcess;
 
 class SeoManager
 {

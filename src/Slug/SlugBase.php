@@ -28,6 +28,7 @@ class SlugBase
     {
         $tags = isset($this->tags) ? $this->tags : [];
         $this->params = Slug::getParamByDelimiters($this->slug, $tags, $this->format_key_value);
+        print_r($this->params);
         return $this;
     }
     public function formatUrl()
