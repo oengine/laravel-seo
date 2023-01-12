@@ -1,0 +1,26 @@
+{
+  "name": "oengine/seo",
+  "description": "",
+  "authors": [
+    {
+      "name": "Nguyen Van Hau",
+      "email": "nguyenvanhau.soft@gmail.com",
+      "role": "Developer"
+    }
+  ],
+  "require": {},
+  "require-dev": {},
+  "extra": {
+    "laravel": {
+      "providers": [
+        "OEngine\\Seo\\SeoServiceProvider"
+      ],
+      "aliases": {}
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "OEngine\\Seo\\": "src/"
+    }
+  }
+}
