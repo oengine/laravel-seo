@@ -8,7 +8,9 @@
       "role": "Developer"
     }
   ],
-  "require": {},
+  "require": {
+    "oengine/laravel-package": "dev-main"
+  },
   "require-dev": {},
   "extra": {
     "laravel": {

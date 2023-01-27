@@ -3,21 +3,25 @@
 namespace OEngine\Seo;
 
 use Illuminate\Support\ServiceProvider;
-use OEngine\Seo\Facades\Sitemap;
+use OEngine\LaravelPackage\ServicePackage;
+use OEngine\LaravelPackage\WithServiceProvider;
 
 class SeoServiceProvider extends ServiceProvider
 {
-    public function boot()
+    use WithServiceProvider;
+    public function configurePackage(ServicePackage $package): void
     {
-        Sitemap::AddSitemap('product', function () {
-            return [];
-        });
-        Sitemap::AddSitemap('catalog', function () {
-            return [
-                ['url' => url('thong-tin-moi'), 'last_update' => date("Y-m-d\Th:m:s+00:00")],
-                ['url' => url('thong-tin-moi2'), 'last_update' => date("Y-m-d\Th:m:s+00:00")],
-                ['url' => url('thong-tin-moi4'), 'last_update' => date("Y-m-d\Th:m:s+00:00")]
-            ];
-        });
+        /*
+         * This class is a Package Service Provider
+         *
+         */
+        $package
+            ->name('laravel-seo')
+            ->hasConfigFile()
+            ->hasViews()
+            ->hasHelpers()
+            ->hasAssets()
+            ->hasTranslations()
+            ->runsMigrations();
     }
 }
