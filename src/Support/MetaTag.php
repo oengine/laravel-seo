@@ -1,8 +1,6 @@
 <?php
 
-namespace OEngine\Seo\Tags\Meta;
-
-use OEngine\Seo\Tags\Tag;
+namespace OEngine\Seo\Support;
 
 class MetaTag extends Tag
 {

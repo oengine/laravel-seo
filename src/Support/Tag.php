@@ -1,6 +1,6 @@
 <?php
 
-namespace OEngine\Seo\Tags;
+namespace OEngine\Seo\Support;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Support\Collection;

@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Facade;
 /**
  * 
  * @method static mixed Route()
+ * @method static mixed SeoInfoTransformer(Closure $transformer)
+ * @method static mixed tagTransformer(Closure $transformer)
+ * @method static mixed getTagTransformers()
+ * @method static mixed getSeoInfoTransformers()
  *
  * @see \OEngine\Seo\Facades\Seo
  */
