@@ -27,7 +27,7 @@ class SeoServiceProvider extends ServiceProvider
     }
     public function packageBooted()
     {
-        if(function_exists('platform_by')){
+        if (function_exists('platform_by')) {
             Seo::Route();
         }
     }
