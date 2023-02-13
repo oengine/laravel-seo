@@ -1,0 +1,12 @@
+{
+    "id":"plugin-laravel-seo-b03fa379-9560-4bf7-ac37-371de4dcfa7d8279851",
+    "name": "laravel-seo",
+    "alias": "laravelSeo",
+    "description": "",
+    "keywords": [],
+    "priority": 100,
+    "namespace":"OEngine\\Seo",
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

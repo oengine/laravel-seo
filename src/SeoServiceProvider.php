@@ -5,6 +5,7 @@ namespace OEngine\Seo;
 use Illuminate\Support\ServiceProvider;
 use OEngine\LaravelPackage\ServicePackage;
 use OEngine\LaravelPackage\WithServiceProvider;
+use OEngine\Seo\Facades\Seo;
 
 class SeoServiceProvider extends ServiceProvider
 {
@@ -23,5 +24,11 @@ class SeoServiceProvider extends ServiceProvider
             ->hasAssets()
             ->hasTranslations()
             ->runsMigrations();
+    }
+    public function packageBooted()
+    {
+        if(function_exists('platform_by')){
+            Seo::Route();
+        }
     }
 }
