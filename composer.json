@@ -3,9 +3,10 @@
   "description": "",
   "authors": [
     {
-      "name": "Nguyen Van Hau",
+      "name": "nguyen van hau",
       "email": "nguyenvanhau.soft@gmail.com",
-      "role": "Developer"
+      "role": "Developer",
+      "homepage": "https://github.com/devhau"
     }
   ],
   "require": {
